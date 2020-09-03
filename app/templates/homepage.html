@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2> Books library </h2>
+        <p>
+
+
+        </p>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <th>Title</th>
+            <th>Author</th>
+            <th>Borrowed Date</th>
+            <th></th>
+            <th></th>
+        </thead>
+    {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.borrowed_date }}</td>
+            <form method="POST" action="{{ url_for('show_library', book_title= book.title) }}">
+                <td><input type="submit" value="Borrow" name="btn" class="btn btn-primary" ></td>
+            </form>
+            <form method="POST" action="{{ url_for('show_library', book_title = book.title) }}">
+                <td><input type="submit" value="Delete" name="btn" class="btn btn-primary" ></td>
+            </form>
+        </tr>
+    {% endfor %}
+    <form method="POST" action="{{ url_for('show_library') }}">
+        {{ form.hidden_tag() }}
+        <tr>
+            {% for field in form if field.widget.input_type != 'hidden' %}
+                <td>{{ field }}</td>
+            {% endfor %}
+            <td></td>
+            <td>
+                <input type="submit" value="Add Book" name="btn" class="btn btn-primary">
+            </td>
+        </tr>
+
+    </form>
+    </table>
+</div>
+
+{% endblock %}
