@@ -1,6 +1,6 @@
 from flask import request, render_template, redirect, url_for
 from app import app, db
-from app import models
+from app import services
 from forms import BookForm
 
 
@@ -11,10 +11,10 @@ def show_library():
 
     if request.method == "POST":
         if book_form.validate_on_submit(): 
-            models.add_book(book_form)
+            services.add_book(book_form)
             return redirect(url_for('show_library'))
             
-    books_list = models.load()
+    books_list = services.load()
     return render_template("homepage.html", form = book_form, books = books_list, error=error)
 
 
@@ -22,7 +22,7 @@ def show_library():
 def borrow_book():
     if request.method == "POST":
         book_title = request.args.get('book_title')
-        models.borrow_book(book_title)
+        services.borrow_book(book_title)
     return redirect(url_for('show_library'))
 
 
@@ -30,5 +30,5 @@ def borrow_book():
 def delete_book():
     if request.method == "POST":
         book_title = request.args.get('book_title')
-        models.delete_book(book_title)
+        services.delete_book(book_title)
     return redirect(url_for('show_library'))

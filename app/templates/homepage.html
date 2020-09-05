@@ -9,7 +9,7 @@
     <table class="table table-bordered">
         <thead class="thead-dark">
             <th>Title</th>
-            <th>Author</th>
+            <th>Authors</th>
             <th>Borrowed Date</th>
             <th></th>
             <th></th>
@@ -17,7 +17,7 @@
     {% for book in books %}
         <tr>
             <td>{{ book.title }}</td>
-            <td>{{ book.author }}</td>
+            <td>{{ book.authors }}</td>
             <td>{{ book.borrowed_date }}</td>
             <form method="POST" action="{{ url_for('borrow_book', book_title= book.title) }}">
                 <td><input type="submit" value="Borrow" name="btn" class="btn btn-primary" ></td>
