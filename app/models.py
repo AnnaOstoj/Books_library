@@ -58,4 +58,4 @@ def load():
         books_list.append(temp_book)
     return books_list
 
-db.create_all()  # czy to jest odpowiednie miejsce?
+db.create_all()  # czy to jest odpowiednie miejsce? chyba niepotrzebne - przetestować

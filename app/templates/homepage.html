@@ -19,10 +19,10 @@
             <td>{{ book.title }}</td>
             <td>{{ book.author }}</td>
             <td>{{ book.borrowed_date }}</td>
-            <form method="POST" action="{{ url_for('show_library', book_title= book.title) }}">
+            <form method="POST" action="{{ url_for('borrow_book', book_title= book.title) }}">
                 <td><input type="submit" value="Borrow" name="btn" class="btn btn-primary" ></td>
             </form>
-            <form method="POST" action="{{ url_for('show_library', book_title = book.title) }}">
+            <form method="POST" action="{{ url_for('delete_book', book_title = book.title) }}">
                 <td><input type="submit" value="Delete" name="btn" class="btn btn-primary" ></td>
             </form>
         </tr>
